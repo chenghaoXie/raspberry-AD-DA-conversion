@@ -36,7 +36,7 @@ getVoltage.so:getVoltage.o
 	
 ###	编译源文件
 getVoltage.o:getVoltage.c
-	gcc -c getVoltage.c
+	gcc -c getVoltage.c -lbcm2835
 
 .PHONY: clean	
 #“.PHONY”表示，clean是个伪目标文件	
