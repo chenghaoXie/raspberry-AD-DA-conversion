@@ -222,6 +222,7 @@ static int32_t ADS1256_ReadData(void);
 int32_t ADS1256_GetAdc(uint8_t _ch);
 void ADS1256_ISR(void);
 uint8_t ADS1256_Scan(void);
+uint16_t getVoltage();
 
 
 
