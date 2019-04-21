@@ -837,12 +837,12 @@ int getVoltage()
 	//	bcm2835_spi_setDataMode(BCM2835_SPI_MODE1);                   // The default
 	//	bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_1024); // The default
 	
-  
+	/*
     bcm2835_spi_begin();
     bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);   //default
     bcm2835_spi_setDataMode(BCM2835_SPI_MODE1);                //default
     bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_256);//default
-	/*
+	//Segmentation fault at this<----------------------------------------------
     bcm2835_gpio_fsel(SPICS, BCM2835_GPIO_FSEL_OUTP);//
     bcm2835_gpio_write(SPICS, HIGH);
     bcm2835_gpio_fsel(DRDY, BCM2835_GPIO_FSEL_INPT);
