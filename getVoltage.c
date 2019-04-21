@@ -829,6 +829,7 @@ int getVoltage()
 	int32_t iTemp;
 	uint8_t buf[3];
 	uint8_t flag;
+	uint8_t BCM2835_SPI_MODE = 1;
     if (!bcm2835_init())
         return 1;
 
@@ -837,14 +838,12 @@ int getVoltage()
 	//	bcm2835_spi_setDataMode(BCM2835_SPI_MODE1);                   // The default
 	//	bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_1024); // The default
 	
-	//No segmentation fault at this<---VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
     bcm2835_spi_begin();
     bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);   //default
-	//No segmentation fault at this<---VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-    bcm2835_spi_setDataMode(BCM2835_SPI_MODE1);                //default问题行<--------------------------------
+    //bcm2835_spi_setDataMode(BCM2835_SPI_MODE1);                //default	问题行<--------------------------------
+	bcm2835_spi_setDataMode(BCM2835_SPI_MODE);
 	/*
     bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_256);//default
-	//Segmentation fault at this<---XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     bcm2835_gpio_fsel(SPICS, BCM2835_GPIO_FSEL_OUTP);//
     bcm2835_gpio_write(SPICS, HIGH);
     bcm2835_gpio_fsel(DRDY, BCM2835_GPIO_FSEL_INPT);
@@ -853,9 +852,7 @@ int getVoltage()
 	//	ADS1256_WriteReg(REG_MUX,0x01);
 	//	ADS1256_WriteReg(REG_ADCON,0x20);
 	//	ADS1256_CfgADC(ADS1256_GAIN_1, ADS1256_15SPS);
-	//Segmentation fault at this<---XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 	id = ADS1256_ReadChipID();
-	//Segmentation fault at this<---XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 	//printf("\r\n");
 	//printf("ID=\r\n");  
 	if (id != 3)
