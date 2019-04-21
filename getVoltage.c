@@ -620,7 +620,7 @@ static void ADS1256_WaitDRDY(void)
 	}
 	if (i >= 400000)
 	{
-		printf("ADS1256_WaitDRDY() Time Out ...\r\n");		
+		//printf("ADS1256_WaitDRDY() Time Out ...\r\n");		
 	}
 }
 
@@ -849,15 +849,15 @@ int getVoltage()
 		ADS1256_CfgADC(ADS1256_GAIN_1, ADS1256_15SPS);
 	*/
 	id = ADS1256_ReadChipID();
-	printf("\r\n");
-	printf("ID=\r\n");  
+	//printf("\r\n");
+	//printf("ID=\r\n");  
 	if (id != 3)
 	{
-		printf("Error, ASD1256 Chip ID = 0x%d\r\n", (int)id);
+		//printf("Error, ASD1256 Chip ID = 0x%d\r\n", (int)id);
 	}
 	else
 	{
-		printf("Ok, ASD1256 Chip ID = 0x%d\r\n", (int)id);
+		//printf("Ok, ASD1256 Chip ID = 0x%d\r\n", (int)id);
 	}
   	ADS1256_CfgADC(ADS1256_GAIN_1, ADS1256_15SPS);
     ADS1256_StartScan(0);
@@ -882,18 +882,18 @@ int getVoltage()
 	            buf[0] = ((uint32_t)adc[i] >> 16) & 0xFF;
 	            buf[1] = ((uint32_t)adc[i] >> 8) & 0xFF;
 	            buf[2] = ((uint32_t)adc[i] >> 0) & 0xFF;
-	            printf("%d=%02X%02X%02X, %8ld", (int)i, (int)buf[0], 
+	            //printf("%d=%02X%02X%02X, %8ld", (int)i, (int)buf[0], 
 	                   (int)buf[1], (int)buf[2], (long)adc[i]);                
 
 	            iTemp = volt[i];	/* uV  */
 				if (iTemp < 0)
 				{
 					iTemp = -iTemp;
-					printf(" (-%ld.%03ld %03ld V) \r\n", iTemp /1000000, (iTemp%1000000)/1000, iTemp%1000);
+					//printf(" (-%ld.%03ld %03ld V) \r\n", iTemp /1000000, (iTemp%1000000)/1000, iTemp%1000);
 				}
 				else
 				{
-					printf(" ( %ld.%03ld %03ld V) \r\n", iTemp /1000000, (iTemp%1000000)/1000, iTemp%1000);                    
+					//printf(" ( %ld.%03ld %03ld V) \r\n", iTemp /1000000, (iTemp%1000000)/1000, iTemp%1000);                    
 				}
 					
 	}
