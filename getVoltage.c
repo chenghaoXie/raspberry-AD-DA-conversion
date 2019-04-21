@@ -818,6 +818,7 @@ uint16_t Voltage_Convert(float Vref, float voltage)
 *********************************************************************************************************
 */
 
+/*
 int getVoltage()
 {
     uint8_t id;
@@ -830,12 +831,12 @@ int getVoltage()
 	uint8_t flag;
     if (!bcm2835_init())
         return 1;
-	/*
-		bcm2835_spi_begin();
-		bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_LSBFIRST );      // The default
-		bcm2835_spi_setDataMode(BCM2835_SPI_MODE1);                   // The default
-		bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_1024); // The default
-	*/
+	
+	//	bcm2835_spi_begin();
+	//	bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_LSBFIRST );      // The default
+	//	bcm2835_spi_setDataMode(BCM2835_SPI_MODE1);                   // The default
+	//	bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_1024); // The default
+	
   
     bcm2835_spi_begin();
     bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);   //default
@@ -846,11 +847,11 @@ int getVoltage()
     bcm2835_gpio_write(SPICS, HIGH);
     bcm2835_gpio_fsel(DRDY, BCM2835_GPIO_FSEL_INPT);
     bcm2835_gpio_set_pud(DRDY, BCM2835_GPIO_PUD_UP);   
-	/*
-		ADS1256_WriteReg(REG_MUX,0x01);
-		ADS1256_WriteReg(REG_ADCON,0x20);
-		ADS1256_CfgADC(ADS1256_GAIN_1, ADS1256_15SPS);
-	*/
+	
+	//	ADS1256_WriteReg(REG_MUX,0x01);
+	//	ADS1256_WriteReg(REG_ADCON,0x20);
+	//	ADS1256_CfgADC(ADS1256_GAIN_1, ADS1256_15SPS);
+	
 	id = ADS1256_ReadChipID();
 	//printf("\r\n");
 	//printf("ID=\r\n");  
@@ -888,7 +889,7 @@ int getVoltage()
 	            //printf("%d=%02X%02X%02X, %8ld", (int)i, (int)buf[0], 
 	            //       (int)buf[1], (int)buf[2], (long)adc[i]);                
 
-	            iTemp = volt[i];	/* uV  */
+	            iTemp = volt[i];	// uV  
 				if (iTemp < 0)
 				{
 					iTemp = -iTemp;
@@ -907,4 +908,9 @@ int getVoltage()
     bcm2835_close();
 	
     return 777;
-}       
+}  
+*/
+
+int getVoltage() {
+	return 777;
+}
