@@ -816,7 +816,7 @@ uint16_t Voltage_Convert(float Vref, float voltage)
 *********************************************************************************************************
 */
 
-int getVoltage()
+uint16_t getVoltage()
 {
     uint8_t id;
   	int32_t adc[8];
