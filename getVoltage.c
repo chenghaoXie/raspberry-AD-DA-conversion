@@ -250,7 +250,7 @@ void bsp_InitADS1256(void)
 	DI_0();
 #endif
 
-//ADS1256_CfgADC(ADS1256_GAIN_1, ADS1256_1000SPS);	/* ÅäÖÃADC²ÎÊý£º ÔöÒæ1:1, Êý¾ÝÊä³öËÙÂÊ 1KHz */
+//ADS1256_CfgADC(ADS1256_GAIN_1, ADS1256_1000SPS);	/* 配置ADC参数： 增益1:1, 数据输出速率 1KHz */
 }
 
 
@@ -267,7 +267,7 @@ void bsp_InitADS1256(void)
 void ADS1256_StartScan(uint8_t _ucScanMode)
 {
 	g_tADS1256.ScanMode = _ucScanMode;
-	/* ¿ªÊ¼É¨ÃèÇ°, ÇåÁã½á¹û»º³åÇø */
+	/* 开始扫描前, 清零结果缓冲区 */
 	{
 		uint8_t i;
 
@@ -378,7 +378,7 @@ void ADS1256_CfgADC(ADS1256_GAIN_E _gain, ADS1256_DRATE_E _drate)
 		//ADS1256_WriteReg(REG_ADCON, (0 << 5) | (0 << 2) | (GAIN_1 << 1));	/*choose 1: gain 1 ;input 5V/
 		buf[3] = s_tabDataRate[_drate];	// DRATE_10SPS;	
 
-		CS_0();	/* SPIÆ¬Ñ¡ = 0 */
+		CS_0();	/* SPI片选 = 0 */
 		ADS1256_Send8Bit(CMD_WREG | 0);	/* Write command register, send the register address */
 		ADS1256_Send8Bit(0x03);			/* Register number 4,Initialize the number  -1*/
 
@@ -652,7 +652,7 @@ static int32_t ADS1256_ReadData(void)
     read |= ((uint32_t)buf[1] << 8);  /* Pay attention to It is wrong   read |= (buf[1] << 8) */
     read |= buf[2];
 
-	CS_1();	/* SPIÆ¬Ñ¡ = 1 */
+	CS_1();	/* SPI片选 = 1 */
 
 	/* Extend a signed number*/
     if (read & 0x800000)
@@ -868,7 +868,7 @@ int  main()
 	flag = 8;
 	while (flag--)
 	{
-		while ((ADS1256_Scan() == 0));
+		while ((ADS1256_Scan() == 0));//wait for ADS1256_Scan() = 1
 	}
 	for (i = 0; i < ch_num; i++)
 	{
