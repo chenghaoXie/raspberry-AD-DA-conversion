@@ -865,7 +865,7 @@ int  main()
 		//{
 			//continue;
 		//}
-	flag = 8;
+	flag = 16;
 	while (flag--)
 	{
 		while ((ADS1256_Scan() == 0));
