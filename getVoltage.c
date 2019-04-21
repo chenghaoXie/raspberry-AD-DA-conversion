@@ -851,9 +851,9 @@ int getVoltage()
 	//	ADS1256_WriteReg(REG_MUX,0x01);
 	//	ADS1256_WriteReg(REG_ADCON,0x20);
 	//	ADS1256_CfgADC(ADS1256_GAIN_1, ADS1256_15SPS);
-	
-	id = ADS1256_ReadChipID();
 	/*
+	id = ADS1256_ReadChipID();
+	//Segmentation fault at this
 	//printf("\r\n");
 	//printf("ID=\r\n");  
 	if (id != 3)
