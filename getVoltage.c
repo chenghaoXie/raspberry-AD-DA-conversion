@@ -840,8 +840,8 @@ int getVoltage()
     bcm2835_spi_begin();
     bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);   //default
     bcm2835_spi_setDataMode(BCM2835_SPI_MODE1);                //default	问题行<--------------------------------
-	/*
     bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_256);//default
+
     bcm2835_gpio_fsel(SPICS, BCM2835_GPIO_FSEL_OUTP);//
     bcm2835_gpio_write(SPICS, HIGH);
     bcm2835_gpio_fsel(DRDY, BCM2835_GPIO_FSEL_INPT);
@@ -884,8 +884,8 @@ int getVoltage()
 	            buf[0] = ((uint32_t)adc[i] >> 16) & 0xFF;
 	            buf[1] = ((uint32_t)adc[i] >> 8) & 0xFF;
 	            buf[2] = ((uint32_t)adc[i] >> 0) & 0xFF;
-	            //printf("%d=%02X%02X%02X, %8ld", (int)i, (int)buf[0], 
-	            //       (int)buf[1], (int)buf[2], (long)adc[i]);                
+	            printf("%d=%02X%02X%02X, %8ld", (int)i, (int)buf[0], 
+	                   (int)buf[1], (int)buf[2], (long)adc[i]);                
 
 	            iTemp = volt[i];	// uV  
 				if (iTemp < 0)
@@ -899,7 +899,6 @@ int getVoltage()
 				}
 					
 	}
-	*/
     bcm2835_spi_end();
     bcm2835_close();
 	
