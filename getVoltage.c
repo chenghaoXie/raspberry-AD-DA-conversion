@@ -866,9 +866,10 @@ int  main()
 			//continue;
 		//}
 	flag = 8;
-	while(flag--)
+	while (flag--)
 	{
-	while((ADS1256_Scan() == 0));
+		while ((ADS1256_Scan() == 0));
+	}
 	for (i = 0; i < ch_num; i++)
 	{
 		adc[i] = ADS1256_GetAdc(i);
@@ -897,7 +898,7 @@ int  main()
 	}
 		//printf("\33[%dA", (int)ch_num);  
 		//bsp_DelayUS(10000);	
-	}	
+	//}	
     bcm2835_spi_end();
     bcm2835_close();
 	
