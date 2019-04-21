@@ -31,12 +31,12 @@ clean:	\
     rm *.so *.o -rf
 
 getVoltage.so:getVoltage.o
-	gcc -o getVoltage.so -lbcm2835 -fPIC -shared -Xlinker getVoltage.o
+	gcc -o getVoltage.so -fPIC -shared getVoltage.o
 #gcc ads1256_test.c -o ads1256_test -lbcm2835
 	
 ###	编译源文件
 getVoltage.o:getVoltage.c
-	gcc -c getVoltage.c
+	gcc -c -lbcm2835 getVoltage.c
 
 .PHONY: clean	
 #“.PHONY”表示，clean是个伪目标文件	
