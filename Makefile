@@ -31,12 +31,12 @@ clean:	\
     rm *.so *.o -rf
 
 getVoltage.so:getVoltage.o
-	gcc -o getVoltage.so -fPIC -shared getVoltage.o -lbcm2835
+	gcc -o getVoltage.so -fPIC -shared getVoltage.o -lbcm2835 -l/usr/include/python3.5
 #gcc ads1256_test.c -o ads1256_test -lbcm2835
 	
 ###	编译源文件
 getVoltage.o:getVoltage.c
-	gcc -c getVoltage.c -lbcm2835
+	gcc -c getVoltage.c -lbcm2835 -l/usr/include/python3.5
 
 .PHONY: clean	
 #“.PHONY”表示，clean是个伪目标文件	
