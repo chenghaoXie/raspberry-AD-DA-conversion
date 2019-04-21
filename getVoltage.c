@@ -222,7 +222,9 @@ static int32_t ADS1256_ReadData(void);
 int32_t ADS1256_GetAdc(uint8_t _ch);
 void ADS1256_ISR(void);
 uint8_t ADS1256_Scan(void);
-uint16_t getVoltage();
+int getVoltage();
+uint16_t Voltage_Convert(float Vref, float voltage);
+void Write_DAC8552(uint8_t channel, uint16_t Data);
 
 
 
@@ -816,7 +818,7 @@ uint16_t Voltage_Convert(float Vref, float voltage)
 *********************************************************************************************************
 */
 
-uint16_t getVoltage()
+int getVoltage()
 {
     uint8_t id;
   	int32_t adc[8];
