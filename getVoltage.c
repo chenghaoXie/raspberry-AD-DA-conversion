@@ -818,7 +818,7 @@ uint16_t Voltage_Convert(float Vref, float voltage)
 *********************************************************************************************************
 */
 
-/*
+
 int getVoltage()
 {
     uint8_t id;
@@ -831,7 +831,8 @@ int getVoltage()
 	uint8_t flag;
     if (!bcm2835_init())
         return 1;
-	
+
+	/*
 	//	bcm2835_spi_begin();
 	//	bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_LSBFIRST );      // The default
 	//	bcm2835_spi_setDataMode(BCM2835_SPI_MODE1);                   // The default
@@ -904,13 +905,9 @@ int getVoltage()
 		//printf("\33[%dA", (int)ch_num);  
 		//bsp_DelayUS(10000);	
 	//}	
+	*/
     bcm2835_spi_end();
     bcm2835_close();
 	
     return 777;
 }  
-*/
-
-int getVoltage() {
-	return 777;
-}
