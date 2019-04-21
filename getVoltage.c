@@ -692,6 +692,7 @@ int32_t ADS1256_GetAdc(uint8_t _ch)
 *	function: Collection procedures
 *	parameter: NULL
 *	The return value:  NULL
+*	这个程序貌似有问题
 *********************************************************************************************************
 */
 void ADS1256_ISR(void)
