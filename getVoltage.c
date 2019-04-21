@@ -815,7 +815,7 @@ uint16_t Voltage_Convert(float Vref, float voltage)
 *********************************************************************************************************
 */
 
-int  main()
+int  _get()
 {
     uint8_t id;
   	int32_t adc[8];
@@ -903,5 +903,5 @@ int  main()
     bcm2835_spi_end();
     bcm2835_close();
 	
-    return 0;
+    return 777;
 }       
