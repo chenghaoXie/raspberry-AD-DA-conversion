@@ -1,8 +1,7 @@
 from ctypes import *
- 
 #load the shared object file
-getVoltage = CDLL('./getVoltage.so')
+getV = CDLL('./getVoltage.so')
  
 #Find sum of integers
-res_int = getVoltage._get()
-print (str(res_int))
+res_int = getV.getVoltage()
+print (res_int)
