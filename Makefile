@@ -31,7 +31,7 @@ clean:	\
     rm *.so *.o -rf
 
 getVoltage.so:getVoltage.o
-	gcc -o getVoltage.so -fPIC -shared getVoltage.o
+	gcc -o getVoltage.so -fPIC -shared getVoltage.o -lbcm2835
 #gcc ads1256_test.c -o ads1256_test -lbcm2835
 	
 ###	编译源文件
