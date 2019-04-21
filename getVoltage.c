@@ -823,6 +823,7 @@ int  main()
 	uint8_t ch_num;
 	int32_t iTemp;
 	uint8_t buf[3];
+	uint8_t flag;
     if (!bcm2835_init())
         return 1;
 	/*
@@ -864,8 +865,9 @@ int  main()
 		//{
 			//continue;
 		//}
-	//while(1)
-	//{
+	flag = 2;
+	while(flag--)
+	{
 	while((ADS1256_Scan() == 0));
 	for (i = 0; i < ch_num; i++)
 	{
@@ -895,7 +897,7 @@ int  main()
 	}
 		//printf("\33[%dA", (int)ch_num);  
 		//bsp_DelayUS(10000);	
-	//}	
+	}	
     bcm2835_spi_end();
     bcm2835_close();
 	
