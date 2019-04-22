@@ -222,7 +222,7 @@ static int32_t ADS1256_ReadData(void);
 int32_t ADS1256_GetAdc(uint8_t _ch);
 void ADS1256_ISR(void);
 uint8_t ADS1256_Scan(void);
-int getVoltage();
+int32_t * getVoltage();
 uint16_t Voltage_Convert(float Vref, float voltage);
 void Write_DAC8552(uint8_t channel, uint16_t Data);
 
@@ -819,7 +819,7 @@ uint16_t Voltage_Convert(float Vref, float voltage)
 */
 
 
-int getVoltage()
+int32_t * getVoltage()
 {
     uint8_t id;
   	int32_t adc[8];
@@ -839,7 +839,7 @@ int getVoltage()
 	
     bcm2835_spi_begin();
     bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);   //default
-    bcm2835_spi_setDataMode(BCM2835_SPI_MODE1);                //default	问题行<--------------------------------
+    bcm2835_spi_setDataMode(BCM2835_SPI_MODE1);                //default
     bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_256);//default
 
     bcm2835_gpio_fsel(SPICS, BCM2835_GPIO_FSEL_OUTP);//
@@ -859,7 +859,7 @@ int getVoltage()
 	}
 	else
 	{
-		printf("Ok, ASD1256 Chip ID = 0x%d\r\n", (int)id);
+		//printf("Ok, ASD1256 Chip ID = 0x%d\r\n", (int)id);
 	}
   	ADS1256_CfgADC(ADS1256_GAIN_1, ADS1256_15SPS);
     ADS1256_StartScan(0);
@@ -876,13 +876,13 @@ int getVoltage()
 	for (i = 0; i < ch_num; i++)
 	{
 		adc[i] = ADS1256_GetAdc(i);
-        volt[i] = (adc[i] * 100) / 167;	
+        //volt[i] = (adc[i] * 100) / 167;	
 	}
 		
+	/*
 	for (i = 0; i < ch_num; i++)
 	{
 		printf("%d=%8ld \r\n", (int)i, (long)adc[i]);
-				/*
 	            buf[0] = ((uint32_t)adc[i] >> 16) & 0xFF;
 	            buf[1] = ((uint32_t)adc[i] >> 8) & 0xFF;
 	            buf[2] = ((uint32_t)adc[i] >> 0) & 0xFF;
@@ -900,11 +900,11 @@ int getVoltage()
 				{
 					printf(" ( %ld.%03ld %03ld V) \r\n", iTemp /1000000, (iTemp%1000000)/1000, iTemp%1000);                    
 				}
-				*/
 					
 	}
+	*/
     bcm2835_spi_end();
     bcm2835_close();
 	
-    return 0;
+    return adc;
 }  
