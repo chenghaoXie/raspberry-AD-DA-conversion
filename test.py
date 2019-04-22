@@ -35,5 +35,9 @@ volt.ch_7 = ch_7
 #getV.getVoltage.restype = POINTER(c_int32)
 getV.getVoltage.restype = POINTER(Voltage)
 res_int32_t = getV.getVoltage()
+
 print (res_int32_t.contents.ch_0)
 print (res_int32_t.contents.ch_1)
+print (res_int32_t.contents.ch_2)
+print (res_int32_t.contents.ch_3)
+print (res_int32_t.contents.ch_4)
