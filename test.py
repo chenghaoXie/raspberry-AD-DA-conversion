@@ -1,7 +1,7 @@
 from ctypes import *
 import time
 #load the shared object file
-start = time.time()
+
 getV = CDLL('./getVoltage.so')
 
 ch_0 = c_int32(0)
@@ -35,9 +35,10 @@ volt.ch_7 = ch_7
 #Find sum of integers
 #print('go to load\n')
 #getV.getVoltage.restype = POINTER(c_int32)
+
+start = time.time()
 getV.getVoltage.restype = POINTER(Voltage)
 res_int32_t = getV.getVoltage()
-
 end = time.time()
 print (end-start)
 
