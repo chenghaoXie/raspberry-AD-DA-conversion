@@ -822,7 +822,8 @@ uint16_t Voltage_Convert(float Vref, float voltage)
 int32_t * getVoltage()
 {
     uint8_t id;
-  	int32_t adc[8];
+  	static int32_t adc[8];
+	static int32_t error_32_t = 1;
 	int32_t volt[8];
 	uint8_t i;
 	uint8_t ch_num;
@@ -830,7 +831,7 @@ int32_t * getVoltage()
 	uint8_t buf[3];
 	uint8_t flag;
     if (!bcm2835_init())
-        return 1;
+        return error_32_t;
 
 	//	bcm2835_spi_begin();
 	//	bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_LSBFIRST );      // The default
