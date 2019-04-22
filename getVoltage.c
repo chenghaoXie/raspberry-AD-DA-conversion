@@ -823,7 +823,7 @@ int32_t * getVoltage()
 {
     uint8_t id;
   	static int32_t adc[8];
-	static int32_t error_32_t = 1;
+	static int32_t error_32_t[8] = { 1,1,1,1,1,1,1,1 };
 	int32_t volt[8];
 	uint8_t i;
 	uint8_t ch_num;
@@ -852,8 +852,8 @@ int32_t * getVoltage()
 	//	ADS1256_WriteReg(REG_ADCON,0x20);
 	//	ADS1256_CfgADC(ADS1256_GAIN_1, ADS1256_15SPS);
 	id = ADS1256_ReadChipID();
-	printf("\r\n");
-	printf("ID=\r\n");  
+	//printf("\r\n");
+	//printf("ID=\r\n");  
 	if (id != 3)
 	{
 		printf("Error, ASD1256 Chip ID = 0x%d\r\n", (int)id);
