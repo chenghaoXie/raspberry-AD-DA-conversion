@@ -1,5 +1,7 @@
 from ctypes import *
+import time
 #load the shared object file
+start = time.time()
 getV = CDLL('./getVoltage.so')
 
 ch_0 = c_int32(0)
@@ -35,6 +37,9 @@ volt.ch_7 = ch_7
 #getV.getVoltage.restype = POINTER(c_int32)
 getV.getVoltage.restype = POINTER(Voltage)
 res_int32_t = getV.getVoltage()
+
+end = time.time()
+print (end-start)
 
 print (res_int32_t.contents.ch_0)
 print (res_int32_t.contents.ch_1)
