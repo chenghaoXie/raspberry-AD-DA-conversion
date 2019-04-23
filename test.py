@@ -56,4 +56,4 @@ volt = getV.getVoltage()
 end = time.time()
 print (end-start)
 
-print (volt[2].contents)
+print (volt.contents[2])
