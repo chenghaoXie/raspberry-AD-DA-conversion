@@ -869,7 +869,7 @@ int32_t * getVoltage()
 		//{
 			//continue;
 		//}
-	flag = 8;
+	flag = 1;
 	while (flag--)
 	{
 		while ((ADS1256_Scan() == 0));//wait for ADS1256_Scan() = 1
