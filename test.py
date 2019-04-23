@@ -56,6 +56,6 @@ volt = getV.getVoltage()
 end = time.time()
 print (end-start)
 
-for i in range(0, len(volt)):
+for i in range(0, len(get_stru)):
      print(volt.contents[i])
 
