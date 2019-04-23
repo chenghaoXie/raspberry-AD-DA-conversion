@@ -48,12 +48,14 @@ print (res_int32_t.contents.ch_3)
 print (res_int32_t.contents.ch_4)
 '''
 
-volt_stru = c_int32 * 8
-volt =volt_stru()
+get_stru = c_int32 * 8
+volt =get_stru()
 start = time.time()
-getV.getVoltage.restype = POINTER(volt_stru)
+getV.getVoltage.restype = POINTER(get_stru)
 volt = getV.getVoltage()
 end = time.time()
 print (end-start)
 
-print (volt.contents[2])
+for i in range(0, len(volt)):
+     print(volt.contents[i])
+
