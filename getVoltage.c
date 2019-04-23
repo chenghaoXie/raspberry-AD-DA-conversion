@@ -823,7 +823,7 @@ int32_t * getVoltage()
 {
     uint8_t id;
   	static int32_t adc[8];
-	static int32_t error_32_t[8] = { 1,1,1,1,1,1,1,1 };
+	static int32_t error_32_t[8] = { 0,0,0,0,0,0,0,0 };
 	int32_t volt[8];
 	uint8_t i;
 	uint8_t ch_num;
