@@ -63,7 +63,7 @@ for i in range(0, ch_num-1):
 cha = 8
 volt =(c_int32 * cha)()
 start = time.time()
-getV.getVoltage.restype = POINTER(volt)
+getV.getVoltage.restype = POINTER(c_int32 * cha)
 volt = getV.getVoltage()
 end = time.time()
 print (end-start)
